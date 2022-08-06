@@ -3,7 +3,6 @@ state("HellPie-Win64-Shipping", "v1.1.3.202208041009")
 	//Patch 3, version 1.1.3
 	bool loadScreen: 0x04FDFC28, 0xA8;
 	
-	//16=no, 17 = collecting ing, 20 = tutorial menu, 21 = crossing off ing, 445<=esc, 128=skill, 18=chef
 	int isPaused: 0x04EC7E88, 0x3C0, 0x8;
 }
 
@@ -23,6 +22,23 @@ state("HellPie-Win64-Shipping", "v1.1.2.202207181555")
 {
 	//Unpatched (i.e. day 1 version)
 	bool loadScreen: 0x5096078, 0xA8;
+}
+
+startup
+{
+	//Settings menu
+	settings.Add("settings", true, "Settings");
+	settings.CurrentDefaultParent = "settings";
+	settings.Add("settings_newFileStart", true, "Auto-start timer upon starting a save file");
+}
+
+start
+{
+	//if was on main menu, then starts timer. (Probably starts timer even when loading save
+	if(old.isPaused == 429 && (current.isPaused == 157 || current.isPaused == 16))
+	{
+		return settings["settings_newFileStart"];
+	}
 }
 
 init
@@ -45,6 +61,7 @@ isLoading
 {
 	//I haven't setup pausing the timer on the pause menu for pre-patch yet
 	if (version == "v1.1.3.202208041009"){
+		//16=not paused, 17 = collecting ing, 20 = tutorial menu, 21 = crossing off ing, 445-447=esc, 128=map/skill menu, 18=return to chef, any choice dialogue, 429=main menu
 		if (current.isPaused == 445 || current.isPaused == 446 || current.isPaused == 447 || current.isPaused == 128 || current.isPaused == 429)
 		{
 			return true;
