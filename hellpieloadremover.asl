@@ -34,11 +34,8 @@ startup
 
 start
 {
-	//if was on main menu, then starts timer. (Probably starts timer even when loading save
-	if(old.isPaused == 429 && (current.isPaused == 157 || current.isPaused == 16))
-	{
-		return settings["settings_newFileStart"];
-	}
+	//if was on main menu, then starts timer. (Probably starts timer even when loading save)
+	return (settings["settings_newFileStart"] && old.isPaused == 429 && (current.isPaused == 157 || current.isPaused == 16));
 }
 
 init
