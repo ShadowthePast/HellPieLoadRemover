@@ -45,7 +45,7 @@ isLoading
 {
 	//I haven't setup pausing the timer on the pause menu for pre-patch yet
 	if (version == "v1.1.3.202208041009"){
-		if (current.isPaused == 445 || current.isPaused == 446 || current.isPaused == 447 || current.isPaused == 128 || current.isPaused == 18)
+		if (current.isPaused == 445 || current.isPaused == 446 || current.isPaused == 447 || current.isPaused == 128 || current.isPaused == 429)
 		{
 			return true;
 		}
