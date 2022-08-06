@@ -3,7 +3,7 @@ state("HellPie-Win64-Shipping", "v1.1.3.202208041009")
 	//Patch 3, version 1.1.3
 	bool loadScreen: 0x04FDFC28, 0xA8;
 	
-	//16=no, 445<=esc, 128=skill, 18=chef
+	//16=no, 17 = collecting ing, 20 = tutorial menu, 21 = crossing off ing, 445<=esc, 128=skill, 18=chef
 	int isPaused: 0x04EC7E88, 0x3C0, 0x8;
 }
 
@@ -45,7 +45,7 @@ isLoading
 {
 	//I haven't setup pausing the timer on the pause menu for pre-patch yet
 	if (version == "v1.1.3.202208041009"){
-		if (current.isPaused != 16)
+		if (current.isPaused == 445 || current.isPaused == 446 || current.isPaused == 447 || current.isPaused == 128 || current.isPaused == 18)
 		{
 			return true;
 		}
