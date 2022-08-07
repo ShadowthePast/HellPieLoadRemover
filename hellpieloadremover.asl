@@ -59,7 +59,7 @@ isLoading
 	//I haven't setup pausing the timer on the pause menu for pre-patch yet
 	if (version == "v1.1.3.202208041009"){
 		//16=not paused, 17 = collecting ing, 20 = tutorial menu, 21 = crossing off ing, 445-447=esc, 128=map/skill menu, 18=return to chef, any choice dialogue, 429=main menu
-		//if IT girl in top right (tl;dr add 11): 27=not paused, 28=ing collected, 32 = crossing off ing, 456-458=esc, 139=(probably)skill menu
+		//if you use the default horns ability (tl;dr add 11): 27=not paused, 28=ing collected, 32 = crossing off ing, 456-458=esc, 139=(probably)skill menu
 		if (current.isPaused == 445 || current.isPaused == 446 || current.isPaused == 447 || current.isPaused == 128 || current.isPaused == 429 || current.isPaused == 456 || current.isPaused == 457 || current.isPaused == 458 || current.isPaused == 139)
 		{
 			return true;
